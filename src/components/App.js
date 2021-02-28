@@ -68,9 +68,15 @@ class App extends Component {
   }
 
   async withdraw(e) {
-    //prevent button from default click
-    //check if this.state.dbank is ok
-    //in try block call dBank withdraw();
+    e.preventDefault()
+    if(this.state.dbank != "undefined") {
+      try {
+        await this.state.dbank.methods.withdraw().send({ from: this.state.account })
+
+      } catch(e) {
+        console.log("Error, withdraw: ", e)
+      }
+    }
   }
 
   async enableEthereum() {
@@ -150,9 +156,12 @@ class App extends Component {
                   </div>
                 </Tab>
                 <Tab eventKey="withdraw" title="Withdraw">
+                  <br></br>
+                  Would you like to withdraw + take interest?
+                  <br></br>
+                  <br></br>
                   <div>
-                    <br></br>
-                    Would you like to withdraw + take interest?
+                    <button type="submit" className="btn btn-primary" onClick={(e) => this.withdraw(e)}>WITHDRAW</button>
                   </div>
                 </Tab>
               </Tabs>
