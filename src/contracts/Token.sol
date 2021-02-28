@@ -10,7 +10,7 @@ contract Token is ERC20 {
   //add minter changed event
   event MinterChanged(address indexed from, address to);
 
-  constructor() payable ERC20("Decentralized Bank Currency", "DCB") {
+  constructor() payable ERC20("Decentralized Universal Token", "DUT") {
     //asign initial minter
     minter = msg.sender;
   }

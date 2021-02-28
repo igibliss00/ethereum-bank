@@ -20,11 +20,11 @@ contract('dBank', ([deployer, user]) => {
   describe('testing token contract...', () => {
     describe('success', () => {
       it('checking token name', async () => {
-        expect(await token.name()).to.be.eq('Decentralized Bank Currency')
+        expect(await token.name()).to.be.eq('Decentralized Universal Token')
       })
 
       it('checking token symbol', async () => {
-        expect(await token.symbol()).to.be.eq('DBC')
+        expect(await token.symbol()).to.be.eq('DUT')
       })
 
       it('checking token initial total supply', async () => {
@@ -70,7 +70,7 @@ contract('dBank', ([deployer, user]) => {
 
     describe('failure', () => {
       it('depositing should be rejected', async () => {
-        await dbank.deposit({value: 10**15, from: user}).should.be.rejectedWith(EVM_REVERT) //to small amount
+        await dbank.deposit({value: 10**15, from: user}).should.be.rejectedWith(EVM_REVERT) //too small amount
       })
     })
   })

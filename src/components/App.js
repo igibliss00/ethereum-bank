@@ -15,6 +15,11 @@ class App extends Component {
   }
 
   async loadBlockchainData(dispatch) {
+    if (typeof window.ethereum !== "undefined") {
+      const web3 = new Web3(window.ethereum)
+    } else {
+      window.alert("Please install MetaMask")
+    }
 
     //check if MetaMask exists
 
@@ -56,7 +61,7 @@ class App extends Component {
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a
             className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="http://www.dappuniversity.com/bootcamp"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
           >
